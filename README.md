@@ -1,5 +1,9 @@
 # vue3-table-lite
 
+[![NPM](https://img.shields.io/npm/v/jackmartin-vue3-table-lite)](https://www.npmjs.com/package/jackmartin-vue3-table-lite)
+[![npm](https://img.shields.io/npm/dm/jackmartin-vue3-table-lite)](https://www.npmjs.com/package/jackmartin-vue3-table-lite)
+[![Lincense](https://img.shields.io/github/license/martinjack/vue3-table-lite)](https://github.com/martinjack/vue3-table-lite/blob/master/LICENSE) 
+
 ![SampleGif](https://linmasahiro.github.io/vue3-table-lite/sample.gif)
 
 A simple and lightweight data table component for Vue.js 3. Features sorting, paging, row check, dynamic data rendering, supported TypeScript, and more.
