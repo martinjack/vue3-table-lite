@@ -110,7 +110,7 @@ export default defineComponent({
         sort: "asc",
       },
       messages: {
-        pagingInfo: "Showing {0}-{1} of {2}",
+        pagingInfo: "Showing _0_-_1_ of _2_",
         pageSizeChangeLabel: "Row count:",
         gotoPageLabel: "Go to page:",
         noDataAvailable: "No data",

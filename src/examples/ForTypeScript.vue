@@ -117,7 +117,7 @@ export default defineComponent({
         sort: "asc",
       },
       messages: {
-        pagingInfo: "Showing {0}-{1} of {2}",
+        pagingInfo: "Showing _0_-_1_ of _2_",
         pageSizeChangeLabel: "Row count:",
         gotoPageLabel: "Go to page:",
         noDataAvailable: "No data",
@@ -125,19 +125,24 @@ export default defineComponent({
       pageOptions: [
         {
           value: 15,
-          text: 15
+          text: 15,
         },
         {
           value: 30,
-          text: 30
-        }
-      ]
+          text: 30,
+        },
+      ],
     });
 
     /**
      * Table search event
      */
-    const doSearch = (offset: number, limit: number, order: string, sort: string) => {
+    const doSearch = (
+      offset: number,
+      limit: number,
+      order: string,
+      sort: string
+    ) => {
       table.isLoading = true;
       setTimeout(() => {
         table.isReSearch = offset == undefined ? true : false;
@@ -181,7 +186,7 @@ export default defineComponent({
       console.log(rowsKey);
     };
 
-    doSearch(0, 15, 'id', 'asc');
+    doSearch(0, 15, "id", "asc");
 
     return {
       table,
@@ -192,4 +197,3 @@ export default defineComponent({
   },
 });
 </script>
-

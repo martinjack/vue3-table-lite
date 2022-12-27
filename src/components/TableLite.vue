@@ -503,7 +503,7 @@ export default defineComponent({
       type: Object,
       default: () => {
         return {
-          pagingInfo: "Showing {0}-{1} of {2}",
+          pagingInfo: "Showing _0_-_1_ of _2_",
           pageSizeChangeLabel: "Row count:",
           gotoPageLabel: "Go to page:",
           noDataAvailable: "No data",
@@ -965,7 +965,7 @@ export default defineComponent({
     );
 
     const stringFormat = (template, ...args) => {
-      return template.replace(/{(\d+)}/g, function (match, number) {
+      return template.replace(/_(\d+)_/g, function (match, number) {
         return typeof args[number] != "undefined" ? args[number] : match;
       });
     };
