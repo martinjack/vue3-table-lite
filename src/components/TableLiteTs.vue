@@ -401,6 +401,7 @@ import {
   watch,
   onBeforeUpdate,
   nextTick,
+  onBeforeMount,
   onMounted,
 } from "vue";
 
@@ -1156,6 +1157,13 @@ export default defineComponent({
     };
 
     watch(() => props.pagingType, switchPagingType);
+
+    /**
+     * onBeforeMount
+     */
+    onBeforeMount(() => {
+      switchPagingType(setting.pagingType);
+    });
 
     /**
      * 組件掛載後事件 (Mounted Event)

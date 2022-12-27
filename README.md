@@ -116,7 +116,7 @@ npm i --save-dev jackmartin-vue3-table-lite
 
 ## Debug
 ```ssh
-npm i && npm run dev
+npm i && npm run serve
 ```
 
 ## Build

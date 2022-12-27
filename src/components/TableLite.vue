@@ -407,6 +407,7 @@ import {
   watch,
   onBeforeUpdate,
   nextTick,
+  onBeforeMount,
   onMounted,
 } from "vue";
 
@@ -731,8 +732,6 @@ export default defineComponent({
           result.push(rows[index]);
         }
       }
-
-      switchPagingType(setting.pagingType);
 
       nextTick(function () {
         // 資料完成渲染後回傳私有元件
@@ -1119,6 +1118,13 @@ export default defineComponent({
     };
 
     watch(() => props.pagingType, switchPagingType);
+
+    /**
+     * onBeforeMount
+     */
+    onBeforeMount(() => {
+      switchPagingType(setting.pagingType);
+    });
 
     /**
      * 組件掛載後事件 (Mounted Event)
