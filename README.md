@@ -10,7 +10,7 @@ A simple and lightweight data table component for Vue.js 3. Features sorting, pa
 
 ## Install
 ```sh
-npm i --save-dev jackmartin-vue3-table-lite
+npm i jackmartin-vue3-table-lite
 ```
 
 ## Document and demo
