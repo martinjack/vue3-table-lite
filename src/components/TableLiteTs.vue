@@ -14,7 +14,7 @@
           <div v-if="isLoading" class="vtl-loading-mask">
             <div class="vtl-loading-content">
               <slot name="loading">
-                <span style="color: white">{{ messages.loading }}</span>
+                <span style="color: white">{{ strings.loading }}</span>
               </slot>
             </div>
           </div>
@@ -259,7 +259,7 @@
             <div role="status" aria-live="polite">
               {{
                 stringFormat(
-                  messages.pagingInfo,
+                  strings.pagingInfo,
                   setting.offset,
                   setting.limit,
                   total
@@ -269,7 +269,7 @@
           </div>
           <div class="vtl-paging-change-div col-sm-12 col-md-4">
             <span class="vtl-paging-count-label">{{
-              messages.pageSizeChangeLabel
+              strings.pageSizeChangeLabel
             }}</span>
             <select
               class="vtl-paging-count-dropdown"
@@ -284,7 +284,7 @@
               </option>
             </select>
             <span class="vtl-paging-page-label">{{
-              messages.gotoPageLabel
+              strings.gotoPageLabel
             }}</span>
             <select class="vtl-paging-page-dropdown" v-model="setting.page">
               <option
@@ -303,6 +303,7 @@
                   v-if="!setting.disableFirstPage"
                   class="vtl-paging-pagination-page-li vtl-paging-pagination-page-li-first page-item"
                   :class="{ disabled: setting.page <= 1 }"
+                  :title="strings.titleFirstPageButton"
                 >
                   <a
                     class="vtl-paging-pagination-page-link vtl-paging-pagination-page-link-first page-link"
@@ -319,6 +320,7 @@
                   v-if="!setting.disablePrevPage"
                   class="vtl-paging-pagination-page-li vtl-paging-pagination-page-li-prev page-item"
                   :class="{ disabled: setting.page <= 1 }"
+                  :title="strings.titlePrevPageButton"
                 >
                   <a
                     class="vtl-paging-pagination-page-link vtl-paging-pagination-page-link-prev page-link"
@@ -350,6 +352,7 @@
                   v-if="!setting.disableNextPage"
                   class="vtl-paging-pagination-page-li vtl-paging-pagination-page-li-next page-item"
                   :class="{ disabled: setting.page >= setting.maxPage }"
+                  :title="strings.titleNextPageButton"
                 >
                   <a
                     class="vtl-paging-pagination-page-link vtl-paging-pagination-page-link-next page-link"
@@ -363,9 +366,10 @@
                 </li>
 
                 <li
-                  v-if="!setting.disableNextPage"
+                  v-if="!setting.disableLastPage"
                   class="vtl-paging-pagination-page-li vtl-paging-pagination-page-li-last page-item"
                   :class="{ disabled: setting.page >= setting.maxPage }"
+                  :title="strings.titleLastPageButton"
                 >
                   <a
                     class="vtl-paging-pagination-page-link vtl-paging-pagination-page-link-last page-link"
@@ -384,7 +388,7 @@
       </div>
       <div class="vtl-row" v-else>
         <div class="vtl-empty-msg col-sm-12 text-center">
-          {{ messages.noDataAvailable }}
+          {{ strings.noDataAvailable }}
         </div>
       </div>
     </div>
@@ -527,15 +531,6 @@ export default defineComponent({
     // 顯示文字 (Display text)
     messages: {
       type: Object,
-      default: () => {
-        return {
-          pagingInfo: "Showing _0_-_1_ of _2_",
-          pageSizeChangeLabel: "Row count:",
-          gotoPageLabel: "Go to page:",
-          noDataAvailable: "No data",
-          loading: "Loading...",
-        };
-      },
     },
     // 靜態模式 (Static mode(no refresh server data))
     isStaticMode: {
@@ -728,6 +723,24 @@ export default defineComponent({
       disableNextPage: props.disableNextPage,
       disableLastPage: props.disableLastPage,
       pagingType: props.pagingType,
+    });
+
+    // Build strings translate
+    const strings = computed(() => {
+      return {
+        ...{
+          pagingInfo: "Showing _0_-_1_ of _2_",
+          pageSizeChangeLabel: "Row count:",
+          gotoPageLabel: "Go to page:",
+          noDataAvailable: "No data",
+          loading: "Loading...",
+          titleFirstPageButton: "First page",
+          titleLastPageButton: "Last page",
+          titlePrevPageButton: "Back",
+          titleNextPageButton: "Next",
+        },
+        ...props.messages,
+      };
     });
 
     // 已選擇中的資料 (Checked rows)
@@ -1194,6 +1207,7 @@ export default defineComponent({
         groupingRowsRefs,
         groupingRows,
         toggleGroup,
+        strings,
       };
     } else {
       return {
@@ -1211,6 +1225,7 @@ export default defineComponent({
         groupingRowsRefs,
         groupingRows,
         toggleGroup,
+        strings,
       };
     }
   },
