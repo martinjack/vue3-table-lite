@@ -1471,10 +1471,6 @@ tr {
   margin-left: 0.5rem;
 }
 
-.vtl-paging-count-dropdown {
-  margin-right: 5px;
-}
-
 .vtl-paging-info,
 .vtl-paging-change-div {
   display: flex;
@@ -1483,5 +1479,10 @@ tr {
 
 .vtl-paging-change-div {
   justify-content: center;
+}
+
+.vtl-paging-count-dropdown,
+.vtl-paging-page-dropdown {
+  margin: 0px 5px 0px 5px;
 }
 </style>
